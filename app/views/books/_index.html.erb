@@ -19,8 +19,8 @@
         <!--favorite-->
         <td>
           <% if book.favorited_by?(current_user) %>
-            <%= link_to book_favorites_path(book), method: :delete do %>
-              <i class="fas fa-solid fa-heart" aria-hidden="true" style="color: red;"></i>
+            <%= link_to book_favorites_path(book), method: :delete, class: "text-danger" do %>
+              <i class="fas fa-solid fa-heart" aria-hidden="true"></i>
               <%= book.favorites.count %>
             <% end %>
           <% else %>
