@@ -1,0 +1,29 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @users.exists? %>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= image_tag user.get_profile_image, size: '50x50' %></td>
+          <td><%= user.name %></td>
+          <!--follow_count-->
+          <td><%= link_to user.followings.count %></td>
+          <!--follower_count-->
+          <td><%= user.followers.count %></td>
+          <!--show-->
+          <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td>ユーザーはいません</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
