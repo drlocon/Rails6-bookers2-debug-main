@@ -17,12 +17,17 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
+          <!--favorite-->
           <td class=<%= "favorite-" + @book.id.to_s %> >
             <%= render "favorites/btn", book: @book %>
           </td>
+          <!--comment-->
           <td class="book-comments-counter">
             <%= render "book_comments/counter", book: @book %>
           </td>
+          <!--pv-->
+          <td>閲覧数: <%= @book.impressions_count %></td>
+          <!--edit/destroy-->
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}" %></td>
