@@ -8,8 +8,8 @@
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
   <!--Rate-->
-  <div class="form-group row" id="star">
-    <%= f.label :rate,'Rate', class: "form-control book_rate" %>
+  <div class="form-group" id="star">
+    <%= f.label :rate,'Rate', class: "col-form-label" %>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
   <!--Create Book-->
