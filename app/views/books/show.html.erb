@@ -25,6 +25,8 @@
           <td class="book-comments-counter">
             <%= render "book_comments/counter", book: @book %>
           </td>
+          <!--Rate-->
+          <td class="book-rate" data-score="<%= @book.rate %>"></td>
           <!--pv-->
           <td>閲覧数: <%= @book.impressions_count %></td>
           <!--edit/destroy-->
@@ -34,6 +36,16 @@
           <% end %>
         </tr>
       </table>
+      
+      <script>
+        $('.book-rate').raty({
+          readOnly: true,
+          score: function() {
+            return $(this).attr('data-score');
+          },
+          path: '/assets/'
+        });
+      </script>
       
       <div class="book-comments-index">
         <%= render "book_comments/index", book: @book %>
