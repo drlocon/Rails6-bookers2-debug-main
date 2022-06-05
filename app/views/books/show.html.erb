@@ -18,9 +18,11 @@
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
           <!--Tag-->
-          <td>
-            <% @tag_list.each do |list| %>
-              <%=link_to list.tag_name,books_path(tag_id:list.id)%><%= list.books.published.count %>
+          <<td>
+            <% @book.tags.each do |tag| %>
+              <li style="list-style: none;">
+                <%= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %>
+              </li>
             <% end %>
           </td>
           <!--favorite-->

@@ -11,8 +11,8 @@
   </div>
   <!--Tag-->
   <div class="form-group">
-    <%= f.label :tag %>
-    <%= f.text_field :tag_name, class: 'form-control book_' %>
+    <%= f.label "Tag" %>
+    <%= f.text_field :tag_name, class: 'form-control book_tag_name' %>
   </div>
   <!--Rate-->
   <div class="form-group" id="star">
@@ -33,4 +33,4 @@
     scoreName: 'book[rate]',
     half: true,
   });
-  </script>  
+</script>
