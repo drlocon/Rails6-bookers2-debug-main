@@ -1,11 +1,18 @@
 <%= form_with model:book,local:true do |f| %>
+<!--Title-->
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control book_title' %>
   </div>
+  <!--Opinion-->
   <div class="form-group">
     <%= f.label :opinion %>
     <%= f.text_area :body, class: 'form-control book_body' %>
+  </div>
+  <!--Tag-->
+  <div class="form-group">
+    <%= f.label :tag %>
+    <%= f.text_field :tag_name, class: 'form-control book_' %>
   </div>
   <!--Rate-->
   <div class="form-group" id="star">

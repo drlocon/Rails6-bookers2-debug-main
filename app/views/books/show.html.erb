@@ -17,6 +17,12 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
+          <!--Tag-->
+          <td>
+            <% @tag_list.each do |list| %>
+              <%=link_to list.tag_name,books_path(tag_id:list.id)%><%= list.books.published.count %>
+            <% end %>
+          </td>
           <!--favorite-->
           <td class=<%= "favorite-" + @book.id.to_s %> >
             <%= render "favorites/btn", book: @book %>
