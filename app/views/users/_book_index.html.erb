@@ -51,8 +51,7 @@
   </table>
 </div>
 
-<h3>7日間分の投稿数</h3>
-<div class="table_width">
+<h4>7日間分の投稿数</h4>
   <table class='table table-bordered'>
     <thead>
       <tr>
@@ -77,8 +76,7 @@
       </tr>
     </tbody>
   </table>
-</div>
-<p>7日間の投稿数の比較</p>
+
 <canvas id="myChart"></canvas>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -98,13 +96,13 @@
           <%= @yesterday_book.count %>,
           <%= @today_book.count %>
         ],
-        borderColor: [
-          'rgb(240, 0, 255)'
-        ],
-        lineTension: 0.3
+        borderColor: "rgba(0,0,255,1)",
+        backgroundColor: "rgba(0,0,0,0)",
+        tension: 0.4
       }]
     },
     options: {
+
       scales: {
         y: {
           suggestedMax: 10,
