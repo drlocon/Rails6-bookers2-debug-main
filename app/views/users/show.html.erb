@@ -1,14 +1,50 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
+    
     <div class='col-md-3'>
       <h2>User info</h2>
       <%= render 'info', user: @user %>
       <h2 class="mt-3">New book</h2>
       <%= render 'books/form', book: @book_new %>
     </div>
+    
     <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>
       <%= render 'books/index',books: @books %>
+      
+      <h2>投稿数の前日比・前週比</h2>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>今日の投稿数</th>
+            <th>前日の投稿数</th>
+            <th>前日比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= current_user.books.where('created_at > ?', Date.today).count %></td>
+            <td><%= current_user.books.where('created_at > ?', Date.yesterday).count %></td>
+            <td>%</td>
+          </tr>
+        </tbody>
+
+        <thead>
+          <tr>
+            <th>今週の投稿数</th>
+            <th>前週の投稿数</th>
+            <th>前週比</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= current_user.books.where('created_at > ?', Date.today).count %></td>
+            <td><%= current_user.books.where('created_at > ?', Date.yesterday).count %></td>
+            <td>%</td>
+          </tr>
+      </tbody>
+      </table>
     </div>
+    
   </div>
 </div>
