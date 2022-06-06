@@ -41,5 +41,17 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+  
+  def search
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    @book_new = Book.new
+    if params[:created_at] == ""
+      @search_book = "日付を選択してください"
+    else
+      create_at = params[:created_at]
+      @search_book = @books.where(['created_at LIKE ?',"#{create_at}%"]).count
+    end
+  end
 
 end
