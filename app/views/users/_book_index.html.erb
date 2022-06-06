@@ -2,7 +2,7 @@
 <div class="table_width">
   <table class='table table-bordered'>
     <thead>
-      <tr> 
+      <tr>
         <th>今日の投稿数</th>
         <th>前日の投稿数</th>
         <th>前日比</th>
@@ -24,11 +24,11 @@
     </tbody>
   </table>
 </div>
-  
+
 <div class="table_width">
   <table class='table table-bordered'>
     <thead>
-      <tr> 
+      <tr>
         <th>今週の投稿数</th>
         <th>前週の投稿数</th>
         <th>前週比</th>
@@ -55,7 +55,7 @@
 <div class="table_width">
   <table class='table table-bordered'>
     <thead>
-      <tr> 
+      <tr>
         <th>6日前</th>
         <th>5日前</th>
         <th>4日前</th>
@@ -78,3 +78,39 @@
     </tbody>
   </table>
 </div>
+<p>7日間の投稿数の比較</p>
+<canvas id="myChart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var ctx = document.getElementById('myChart');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+      datasets: [{
+        label: '投稿した本の数',
+        data: [
+          <%= @books.created_6days.count %>,
+          <%= @books.created_5days.count %>,
+          <%= @books.created_4days.count %>,
+          <%= @books.created_3days.count %>,
+          <%= @books.created_2days.count %>,
+          <%= @yesterday_book.count %>,
+          <%= @today_book.count %>
+        ],
+        borderColor: [
+          'rgb(240, 0, 255)'
+        ],
+        lineTension: 0.3
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          suggestedMax: 10,
+          suggestedMin: 0,
+        }
+      }
+    }
+  });
+</script>
