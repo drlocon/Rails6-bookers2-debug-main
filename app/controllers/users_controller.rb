@@ -28,6 +28,12 @@ class UsersController < ApplicationController
       render "edit"
     end
   end
+  
+  def daily_posts
+    user = User.find(params[:user_id])
+    @books = user.books.where(created_at: params[:created_at].to_date.all_day)
+    render :daily_posts_form
+  end
 
   private
 
@@ -39,18 +45,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
-    end
-  end
-  
-  def search
-    @user = User.find(params[:user_id])
-    @books = @user.books
-    @book_new = Book.new
-    if params[:created_at] == ""
-      @search_book = "日付を選択してください"
-    else
-      create_at = params[:created_at]
-      @search_book = @books.where(['created_at LIKE ?',"#{create_at}%"]).count
     end
   end
 
