@@ -27,18 +27,18 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
-              <% @group.user.each do |member| %>
-                <%= member.name %>
+              <% @group.users.each do |user| %>
+                <li style="list-style: none;"><%= user.name %></li>
               <% end %>
             </td>
             <td>
               <% if @group.is_owned_by?(current_user) %>
                 <%= link_to 'Edit', edit_group_path(@group), class: "btn btn-sm btn-success" %>
-              <% elsif @group.users.include?(current_user) %>
-                <%= link_to 'Leave this group', group_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% elsif @group.includesUser?(current_user)%>
+                <%= link_to 'Leave this group', group_group_users_path(@group), method: :delete, class: "btn btn-sm btn-danger" %>
               <% else %>
-                <%= link_to 'Join this group', group_join_path(@group), class: "btn btn-sm btn-success" %>
-              <% end %>
+                <%= link_to 'Join this group', group_group_users_path(@group), method: :post, class: "btn btn-sm btn-success" %>
+            <% end %>
             </td>
           </tr>
         </tbody>
